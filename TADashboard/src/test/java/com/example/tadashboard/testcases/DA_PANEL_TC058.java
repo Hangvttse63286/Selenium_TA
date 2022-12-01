@@ -37,6 +37,10 @@ public class DA_PANEL_TC058 extends BaseTest{
         ExtentTestManager.logMessage("Click Add New link");
         panelPage.clickLnkAddNew();
 
-
+        ExtentTestManager.logMessage("Create a new panel");
+        panelPage.sendKeyTxtPopupPanelDisplayName("Logigear");
+        panelPage.selectOptDdlPopupPanelChartType("Pie");
+        panelPage.selectOtpPopupPanelSeries("name");
+        panelPage.clickBtnPopupPanelOk();
     }
 }

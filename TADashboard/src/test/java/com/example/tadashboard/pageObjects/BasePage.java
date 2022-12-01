@@ -18,19 +18,23 @@ public class BasePage {
     private final By btnCreateNewPanel = By.xpath("//div[@class='cpbutton']//span[.='Create new panel']");
     private final By tabOverview = By.xpath("//a[.='Overview']");
     private final By tabExecutionDashboard = By.xpath("//a[.='Execution Dashboard']");
-    private final By popupAddPage = By.id("div_popup");
-    private final By popupAddPanel = By.xpath("//div[@class='ui-dialog editpanelDlg']");
-    private final By txtAddPanelDisplayName = By.id("txtDisplayName");
-    private final By ddlAddPanelChartType = By.id("cbbChartType");
-    private final By ddlAddPanelCategory = By.id("cbbCategoryField");
-    private final By ddlAddPanelSeries = By.id("cbbSeriesField");
-    private final By txtAddPageName = By.id("name");
-    private final By ddlAddPageParentPage = By.id("parent");
-    private final By ddlAddPageNumOfCol = By.id("columnnumber");
-    private final By ddlAddPageAfterPage = By.id("afterpage");
-    private final By chkAddPagePublic = By.id("ispublic");
-    private final By btnAddPageOk = By.id("OK");
-    private final By btnAddPageCancel = By.id("Cancel");
+    private final By popupPage = By.id("div_popup");
+    private final By popupPanel = By.xpath("//div[@class='ui-dialog editpanelDlg']");
+    private final By txtPopupPanelDisplayName = By.id("txtDisplayName");
+    private final By ddlPopupPanelChartType = By.id("cbbChartType");
+    private final By ddlPopupPanelCategory = By.id("cbbCategoryField");
+    private final By ddlPopupPanelSeries = By.id("cbbSeriesField");
+    private final By txtPopupPanelCaptionCategory = By.id("txtCategoryXAxis");
+    private final By txtPopupPanelCaptionValue = By.id("txtValueYAxis");
+    private final By btnPopupPanelOk = By.id("OK");
+    private final By btnPopupPanelCancel = By.id("Cancel");
+    private final By txtPopupPageName = By.id("name");
+    private final By ddlPopupPageParentPage = By.id("parent");
+    private final By ddlPopupPageNumOfCol = By.id("columnnumber");
+    private final By ddlPopupPageAfterPage = By.id("afterpage");
+    private final By chkPopupPagePublic = By.id("ispublic");
+    private final By btnPopupPageOk = By.id("OK");
+    private final By btnPopupPageCancel = By.id("Cancel");
     private final String headMenuTabXPath = "//ul[@class='head-menu']//a[contains(text(), '%s')]";
     private final String subMnuAdministerXPath = "//..//a[.='%s']";
     private final String pageXPath = "//a[contains(text(),'%s')]";
@@ -62,6 +66,74 @@ public class BasePage {
 
     protected WebElement getSubMnuAdminister(HeadMenuTab subTab) {
         return getHeadMenuTab(HeadMenuTab.ADMINISTER).findElement(By.xpath(String.format(subMnuAdministerXPath, subTab.getTab())));
+    }
+
+    protected WebElement getPopupPanel() {
+        return DriverManager.findElement(popupPanel);
+    }
+
+    protected WebElement getTxtPopupPanelDisplayName() {
+        return getPopupPanel().findElement(txtPopupPanelDisplayName);
+    }
+
+    protected Select getDdlPopupPanelChartType() {
+        return new Select(getPopupPanel().findElement(ddlPopupPanelChartType));
+    }
+
+    protected Select getDdlPopupPanelCategory() {
+        return new Select(getPopupPanel().findElement(ddlPopupPanelCategory));
+    }
+
+    protected Select getDdlPopupPanelSeries() {
+        return new Select(getPopupPanel().findElement(ddlPopupPanelSeries));
+    }
+
+    protected WebElement getTxtPopupPanelCaptionCategory() {
+        return getPopupPanel().findElement(txtPopupPanelCaptionCategory);
+    }
+
+    protected WebElement getTxtPopupPanelCaptionValue() {
+        return getPopupPanel().findElement(txtPopupPanelCaptionValue);
+    }
+
+    protected WebElement getBtnPopupPanelOk() {
+        return getPopupPanel().findElement(btnPopupPanelOk);
+    }
+
+    protected WebElement getBtnPopupPanelCancel() {
+        return getPopupPanel().findElement(btnPopupPanelCancel);
+    }
+
+    public void sendKeyTxtPopupPanelDisplayName(String name) {
+        getTxtPopupPanelDisplayName().sendKeys(name);
+    }
+
+    public void selectOptDdlPopupPanelChartType(String option) {
+        getDdlPopupPanelChartType().selectByValue(option);
+    }
+
+    public void selectOtpPopupPanelSeries(String option) {
+        getDdlPopupPanelSeries().selectByValue(option);
+    }
+
+    public Boolean isDdlPopupPanelCategoryEnabled() {
+        return getDdlPopupPanelCategory().getWrappedElement().isEnabled();
+    }
+
+    public Boolean isDdlPopupPanelSeriesEnabled() {
+        return getDdlPopupPanelSeries().getWrappedElement().isEnabled();
+    }
+
+    public Boolean isTxtPopupPanelCaptionCategoryEnabled() {
+        return getTxtPopupPanelCaptionCategory().isEnabled();
+    }
+
+    public Boolean isTxtPopupPanelCaptionValueEnabled() {
+        return getTxtPopupPanelCaptionValue().isEnabled();
+    }
+
+    public void clickBtnPopupPanelOk() {
+        getBtnPopupPanelOk().click();
     }
 
     public void clickTabOverview() {
@@ -140,36 +212,36 @@ public class BasePage {
         getPageTab(page).click();
     }
 
-    protected WebElement getPopupAddPage() {
-        return DriverManager.findElement(popupAddPage);
+    protected WebElement getPopupPage() {
+        return DriverManager.findElement(popupPage);
     }
 
-    protected WebElement getTxtAddPageName() {
-        return getPopupAddPage().findElement(txtAddPageName);
+    protected WebElement getTxtPopupPageName() {
+        return getPopupPage().findElement(txtPopupPageName);
     }
 
-    protected Select getDdlAddPageParentPage() {
-        return new Select(getPopupAddPage().findElement(ddlAddPageParentPage));
+    protected Select getDdlPopupPageParentPage() {
+        return new Select(getPopupPage().findElement(ddlPopupPageParentPage));
     }
 
-    protected Select getDdlAddPageNumOfCol() {
-        return new Select(getPopupAddPage().findElement(ddlAddPageNumOfCol));
+    protected Select getDdlPopupPageNumOfCol() {
+        return new Select(getPopupPage().findElement(ddlPopupPageNumOfCol));
     }
 
-    protected Select getDdlAddPageAfterPage() {
-        return new Select(getPopupAddPage().findElement(ddlAddPageAfterPage));
+    protected Select getDdlPopupPageAfterPage() {
+        return new Select(getPopupPage().findElement(ddlPopupPageAfterPage));
     }
 
-    protected WebElement getChkAddPagePublic() {
-        return getPopupAddPage().findElement(chkAddPagePublic);
+    protected WebElement getChkPopupPagePublic() {
+        return getPopupPage().findElement(chkPopupPagePublic);
     }
 
-    protected WebElement getBtnAddPageOk() {
-        return getPopupAddPage().findElement(btnAddPageOk);
+    protected WebElement getBtnPopupPageOk() {
+        return getPopupPage().findElement(btnPopupPageOk);
     }
 
-    protected WebElement getBtnAddPageCancel() {
-        return getPopupAddPage().findElement(btnAddPageCancel);
+    protected WebElement getBtnPopupPageCancel() {
+        return getPopupPage().findElement(btnPopupPageCancel);
     }
 
     public void clickHeadMenuTab(HeadMenuTab tab) {
@@ -195,34 +267,34 @@ public class BasePage {
     }
 
     public void addNewPage(String name, String parentPage, int numOfCol, String displayAfterPage, boolean isPublic) throws InterruptedException {
-        sendKeyToTxtAddPageName(name);
-        selectForDdlAddPageParentPage(parentPage);
-        getDdlAddPageNumOfCol().selectByVisibleText(String.valueOf(numOfCol));
-        selectForDdlAddPageAfterPage(displayAfterPage);
-        if(getChkAddPagePublic().isSelected() != isPublic)
-            getChkAddPagePublic().click();
-        clickBtnAddPageOk();
+        sendKeyToTxtPopupPageName(name);
+        selectForDdlPopupPageParentPage(parentPage);
+        getDdlPopupPageNumOfCol().selectByVisibleText(String.valueOf(numOfCol));
+        selectForDdlPopupPageAfterPage(displayAfterPage);
+        if(getChkPopupPagePublic().isSelected() != isPublic)
+            getChkPopupPagePublic().click();
+        clickBtnPopupPageOk();
     }
 
-    public void sendKeyToTxtAddPageName(String name) {
-        getTxtAddPageName().sendKeys(name);
+    public void sendKeyToTxtPopupPageName(String name) {
+        getTxtPopupPageName().sendKeys(name);
     }
 
-    public void selectForDdlAddPageParentPage(String parentPage) {
-        getDdlAddPageParentPage().selectByVisibleText(parentPage);
+    public void selectForDdlPopupPageParentPage(String parentPage) {
+        getDdlPopupPageParentPage().selectByVisibleText(parentPage);
     }
 
-    public void selectForDdlAddPageAfterPage(String displayAfterPage) {
-        getDdlAddPageAfterPage().selectByVisibleText(displayAfterPage);
+    public void selectForDdlPopupPageAfterPage(String displayAfterPage) {
+        getDdlPopupPageAfterPage().selectByVisibleText(displayAfterPage);
     }
 
-    public void clickBtnAddPageOk() throws InterruptedException {
-        getBtnAddPageOk().click();
+    public void clickBtnPopupPageOk() throws InterruptedException {
+        getBtnPopupPageOk().click();
         Thread.sleep(500);
     }
 
-    public void clickBtnAddPageCancel() {
-        getBtnAddPageCancel().click();
+    public void clickBtnPopupPageCancel() {
+        getBtnPopupPageCancel().click();
     }
 
     public void deletePage(String page) throws InterruptedException {

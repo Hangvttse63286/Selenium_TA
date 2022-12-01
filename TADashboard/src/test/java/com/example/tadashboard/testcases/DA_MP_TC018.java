@@ -32,31 +32,31 @@ public class DA_MP_TC018 extends BaseTest{
         ExtentTestManager.logMessage("Go to Global Setting -> Add page");
         dashboardPage.clickGlobalSettingMenuTab(GlobalSettingSubMenu.ADD_PAGE);
         ExtentTestManager.logMessage("Enter Page Name");
-        dashboardPage.sendKeyToTxtAddPageName(Constant.PARENT_PAGE);
+        dashboardPage.sendKeyToTxtPopupPageName(Constant.PARENT_PAGE);
         ExtentTestManager.logMessage("Click OK button");
-        dashboardPage.clickBtnAddPageOk();
+        dashboardPage.clickBtnPopupPageOk();
 
         //add child page 1
         ExtentTestManager.logMessage("Go to Global Setting -> Add page");
         dashboardPage.clickGlobalSettingMenuTab(GlobalSettingSubMenu.ADD_PAGE);
         ExtentTestManager.logMessage("Enter Page Name");
-        dashboardPage.sendKeyToTxtAddPageName(Constant.CHILD_PAGE_1);
+        dashboardPage.sendKeyToTxtPopupPageName(Constant.CHILD_PAGE_1);
         ExtentTestManager.logMessage("Click on Parent Page dropdown list");
         ExtentTestManager.logMessage("Select a parent page");
-        dashboardPage.selectForDdlAddPageParentPage(Constant.PARENT_PAGE);
+        dashboardPage.selectForDdlPopupPageParentPage(Constant.PARENT_PAGE);
         ExtentTestManager.logMessage("Click OK button");
-        dashboardPage.clickBtnAddPageOk();
+        dashboardPage.clickBtnPopupPageOk();
 
         //add child page 2
         ExtentTestManager.logMessage("Go to Global Setting -> Add page");
         dashboardPage.clickGlobalSettingMenuTab(GlobalSettingSubMenu.ADD_PAGE);
         ExtentTestManager.logMessage("Enter Page Name");
-        dashboardPage.sendKeyToTxtAddPageName(Constant.CHILD_PAGE_2);
+        dashboardPage.sendKeyToTxtPopupPageName(Constant.CHILD_PAGE_2);
         ExtentTestManager.logMessage("Click on Parent Page dropdown list");
         ExtentTestManager.logMessage("Select a parent page");
-        dashboardPage.selectForDdlAddPageParentPage(Constant.PARENT_PAGE);
+        dashboardPage.selectForDdlPopupPageParentPage(Constant.PARENT_PAGE);
         ExtentTestManager.logMessage("Click OK button");
-        dashboardPage.clickBtnAddPageOk();
+        dashboardPage.clickBtnPopupPageOk();
 
         ExtentTestManager.logMessage("Check 'Test Child 2' is added successfully");
         Assert.assertTrue(dashboardPage.isChildPageAdded(Constant.PARENT_PAGE, Constant.CHILD_PAGE_2), AssertMessage.ELEMENT_NOT_DISPLAYED.getMsg() + "Page "+ Constant.CHILD_PAGE_2);
